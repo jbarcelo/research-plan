@@ -1,0 +1,285 @@
+\documentclass[a4paper,twocolumns]{article}%!PN
+\usepackage{graphicx}
+\usepackage[ansinew]{inputenc}
+\usepackage[cmex10]{amsmath}
+\usepackage{verbatim}
+\usepackage{subfigure}
+\usepackage{epsfig}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{psfrag}
+
+\geometry{verbose,tmargin=30mm,bmargin=25mm,lmargin=33mm,rmargin=33mm}
+
+
+\begin{document}
+
+\title{Multiple Access Wireless Mesh Networks \\ Research Plan 2012-2016}
+
+\author{Jaume Barcelo}
+
+%\institute{NeTS Research Group - Dpt. of Information and Communication Technologies\\
+%Universitat Pompeu Fabra\\
+%Passeig de la Circumval-lacio 8, 08003 Barcelona, Spain\\
+%\emph{boris.bellalta@upf.edu}}
+
+\date{}
+
+\maketitle
+
+\begin{abstract}
+Wireless mesh networks offer some fascinating research challenges and recent standardization efforts indicate that there is a strong demand for such networks.
+We identify this opportunity to contribute in an area which is relevant both to the market and the research community, and we outline a research plan for the next years.
+The goal is to develop and evaluate a semi-random backoff medium access control protocol for wireless mesh networks.
+This approach has the potential to reach collision-free operation which results in an efficient use of the available channel resources.
+As a further step, the protocol will be extended to accommodate multi-packet transmission and reception.
+
+\vspace{0.5cm}
+\textbf{Keywords}: mesh network, medium access control, collision-free operation, cross-layer, MPTR
+
+\end{abstract}
+
+\tableofcontents
+
+\clearpage
+
+%\begin{spacing}{1.5}
+
+\section{Introduction}
+
+Increasingly, the last (or first) hop of a data network connection is a wireless hop.
+There is great interest in making it possible to connect computing devices to data networks using \emph{multiple} wireless hops.
+The networks that support this kind of communications are often referred to as multi-hop wireless mesh networks.
+
+The analysis and protocol design for these multi-hop wireless networks present a new family of challenges which are not present in their single-hop counterparts.
+Any transmission by one of the wireless stations in a multi-hop wireless mesh network has an effect on the reception of all its neighbouring stations.
+For this reason, an arbitration protocol to share the wireless medium is critical.
+
+In conventional wireless local area networks, the medium can be considered as a single collision domain.
+In cellular wireless networks, there is a central entity or base station that arbitrates channel access.
+The difficulty of wireless mesh networks is that the the medium access protocol has to be executed distributedly across multiple collisions domains.
+Since wireless collisions occur at reception, a wireless station in a mesh networks can easily interfere with the transmission of a second station that is beyond its transmission and reception range in which is commonly referred to as the hidden node problem.
+
+Data networks are widely used to interconnect devices with computing capabilities.
+Increasingly, data wireless communications are used to interconnect those devices.
+Most of those wireless communications are nowadays single hop.
+A good example is a laptop computer that uses its wireless interface to connect to a wireless access point that is a gateway to the wired network.
+
+It is also possible to construct wireless mesh (or multi-hop) networks.
+In these networks, a data packet traverses more than one wireless hop before reaching its final destination.
+Examples of wireless mesh networks are \emph{RoofNet}\cite{chambers2002grr}, and \emph{guifi.net} \cite{oliver2010wca}.
+The first one has been deployed for research purposes at the Massachusetts Institute of Technology.
+\emph{guifi.net} is a citizen-run community network with over 10,000 active nodes that was created to offer broadband connectivity to rural area and has grown and evolved to be an alternative to commercial networks.
+
+These two examples of wireless mesh networks rely on point-to-point or point-to-multipoint links and require a certain degree of infrastructure and the use of directive antennas.
+Different links also use different radio channels, which helps to prevent cross-link interference.
+
+There is still another possibility to construct wireless mesh networks when the different wireless nodes do not use directive antennas and they share the same radio channel.
+These are multiple access wireless mesh networks and require some kind of mechanism to share the radio channel among different participants.
+For convenience, in the remainder of the document, we will use sometimes the shorter form \emph{mesh networks} to refer to multiple access wireless mesh networks.
+As we will detail in the next section, these kind of networks represent a fabulous research challenge.
+
+\section{The challenge of multiple access wireless mesh networks}
+
+Back in 1987, Tobagi already recognised the difficulty of modelling and understanding multiple access wireless mesh networks \cite{tobagi1987mpa}.
+According to Tobagi,  the characteristics that make mesh networks problematic are the need of a multiple access protocol and the fact that any action taken by a node, will have an  impact on several neighbouring nodes.
+This paper also acknowledges the importance of mathematical modeling and simulation as performance analysis tools and as in integral step of the design process.
+
+The problem of finding an optimal link activation schedule has been shown to be NP-complete \cite{arikan1984scr,ramanathan1993sam} and it maybe unrealistic to pursue a centralized solution.
+It seems more reasonable to study the possibility of achieving a sub-optimal solution in a distributed fashion.
+The idea is that each of the participating nodes gathers information from their environment and exchange some messages with their immediate neighbours in order to cooperate in an efficient channel access mechanism.
+
+To this extent, it is particularly interesting the insight presented in \cite{kar2004apf}.
+It applies to a mesh network that uses Aloha to access the medium and the goal is to maximize proportional fairness (which is equivalent to maximize the geometric average of throughput).
+The key observation is that this is a separable problem and the optimum contention parameter of each node can be computed after gathering some information from its immediate neighbours.
+In these simplified version of the problem, the behaviour of a node is completely unaffected by the nodes that are more than two hops away.
+This is an extremely appealing solution, since it allows a distributed (and optimum) computation of the contention parameter.
+
+As opposed to the centralized computation of the optimum schedule, the distributed computation of the contention parameter is amenable to analysis and realizable in an actual network.
+The price to pay, is that of collisions.
+Random access protocols often result in simultaneous transmissions that result in cross-interference and packet loss.
+
+A comprehensive survey on wireless mesh networks was presented in \cite{akyildiz2005wmn}, covering the main contributions up to 2004 in all the different networks layers.
+For each of the different research areas, the article also provides a description of open research challenges.
+According to the classification provided in that article, our main research interest is in the field of single-channel MAC protocols.
+Nevertheless, in our research plan, we will also consider contributions to other areas such as PHY-MAC and MAC-NETWORK layer interplay.
+
+The interest on wireless mesh networks fostered the standardization efforts even though there was not an agreement in many of the research challenges identified in the survey mentioned above.
+The study group was created in 2003 and it became the IEEE 802.11s task group in 2004.
+The goal was to extend the IEEE 802.11 family to support mesh networking and, as of today, the main technical decisions have been agreed upon.
+IEEE 802.11s includes the mesh coordinated channel access (MCCA) that offers the possibility of channel reservation.
+It also supports layer-2 routing with the hybrid wireless mesh protocol (HWMP).
+A simulation framework for IEEE 802.11s in ns-3 has been used to explore its performance in \cite{andreev2010ssv}.
+We believe that there is much room for improvement in the suite of protocols presented in this standard amendment and in the next sections we comment on our research idea.
+
+
+\section{Background: collision-free operation in WLANs}
+\label{sec:background}
+
+
+\begin{figure*}[!t]
+\centering
+\subfigure[CSMA/CA]{\includegraphics[width=5.5in]{figures/csma_ca}%
+\label{fig:csma_ca}}
+\subfigure[CSMA/ECA]{\includegraphics[width=5.5in]{figures/csma_eca}%
+\label{fig:csma_eca}}
+\caption{Examples of contention in which two wireless stations compete for channel access. The rounded boxes represent transmissions and the numbers are the backoff counters. It can be observed that CSMA/ECA attains cyclic collision-free operation after the cooperative construction of the schedule (transient convergence).}
+\label{fig:ca_vs_eca}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\subfigure[CSMA/CA]{\includegraphics[width=2.5in]{figures/csma_ca_compact}%
+\label{fig:csma_ca_compact}}
+\subfigure[CSMA/ECA]{\includegraphics[width=2.5in]{figures/csma_eca_compact}%
+\label{fig:csma_eca_compact}}
+\caption{A compact representation of contention in which six wireless stations compete for channel access. The balls represent the transmissions of the stations and the filling patterns are used to identify the station that transmitted. The cooperative construction of the collision-free schedule in CSMA/ECA finishes when all the stations consecutively successfully transmit.}
+\label{fig:ca_vs_eca_compact}
+\end{figure*}
+
+
+The possibility of achieving collision-free operation in IEEE 802.11 wireless local area networks has been already covered in detail in the work we and others have carried out during the last years \cite{barcelo2008lba,bellalta2009vtc,barcelo2009tpc,barcelo2010fcc,barcelo2011tcf,barcelo2011cfo,he2009sbr,fang2010dlm}.
+In particular, we have suggested a slight change in the carrier sense multiple access (CSMA/CA) protocol in IEEE 802.11 to use a deterministic backoff after successful transmissions.
+We call the new protocol CSMA with enhanced collision avoidance (CSMA/ECA).
+The two protocols are contrasted in Fig. \ref{fig:ca_vs_eca} where it is shown that CSMA/ECA reaches deterministic, collision-free, fair operation.
+A more compact representation of the two protocols is depicted in Fig. \ref{fig:ca_vs_eca_compact}.
+In this last figure all slots are represented as being equally long, which is completely false since their length differs orders of magnitude.
+This concession makes it possible to represent the contention of six different stations and how our improved protocol reaches collision free operation.
+
+A prototype implementation of CSMA/ECA using broadcomm hardware has been successfully tested at the Hamilton Institute under the supervision of David Malone.
+Our research interest is to apply the same basic principles of CSMA/ECA in wireless mesh networks.
+
+Achieving similar results in mesh networks represent a greater challenge, but the potential benefits may also be larger.
+The key difference is that in mesh networks, each node has a different view of the network and channel activity.
+Therefore it is no longer possible to rely exclusively on CSMA/ECA protocol to reach collision free operation, since carrier sensing offers only partial information about the network activity.
+
+
+
+
+\section{The main research idea: collision-free operation in mesh networks}
+
+The main research idea that we want to explore is the possibility to distributedly reach a collision free schedule.
+The underlying idea is very simple and it has already been presented in a workshop paper \cite{barcelo2011cfo}.
+It uses the common simplification that reduces the complexity of radio propagation to a connectivity graph.
+When combined with a data flow graph, it is possible to derive a flow interference graph that can be useful to compute the schedule length.
+Examples of these graphs are depicted in Figs. \ref{fig:basic} and \ref{fig:interference_graph}.
+Just as in the WLANs case described in the previous section, it is possible to use a deterministic backoff after successful transmissions and a random backoff after transmission errors.
+Some subtle differences need to be introduced to account for the fact that medium access in mesh networks is not slotted.
+Early results for toy network topologies indicate the possibility of collision-free operation and consequent improvement of several network performance metrics, such as proportional fairness.
+Nevertheless, this idea needs to be developed and validated.
+
+\begin{figure}[b]
+\psfrag{d_1}[cc][cc]{$s_1$}
+\psfrag{d_2}[cc][cc]{$s_2$}
+\psfrag{d_3}[cc][cc]{$s_3$}
+\psfrag{f_1}[cc][cc]{$f_1$}
+\psfrag{f_2}[cc][cc]{$f_2$}
+\psfrag{f_3}[cc][cc]{$f_3$}
+\psfrag{l_1}[cc][cc]{$l_1$}
+\psfrag{l_2}[cc][cc]{$l_2$}
+\centering
+\includegraphics[width=2.9in]{figures/basic.eps}
+\caption{Topology of a simple ad-hoc network.}
+\label{fig:basic}
+\end{figure}
+
+\begin{figure}[b]
+\psfrag{f_1}[cc][cc]{$f_1$}
+\psfrag{f_2}[cc][cc]{$f_2$}
+\psfrag{f_3}[cc][cc]{$f_3$}
+\centering
+\includegraphics[width=1.6in]{figures/interference_graph.eps}
+\caption{Interference graph of a simple ad-hoc network.}
+\label{fig:interference_graph}
+\end{figure}
+
+We identify the following tasks that need to be carried out in order to make progress in this particular research line.
+Our research activity would be developed in the framework of the network technologies and strategies research group, in the DTIC department at Universitat Pompeu Fabra.
+For each task, we also identify potential collaborations with other groups of the same department or different research institutions.
+\begin{enumerate}
+  \item Obtain a flexible combinatorics framework to model CSMA/ECA and similar and derived protocols.
+
+To make it amenable to analysis, it is convenient to model CSMA/ECA as a bins-in-balls problem.
+The simplest problem is to compute the number of successes (bins with exactly one ball) when we throw some balls into a number of bins.
+A solution to this problem in the context of telecommunications is presented in \cite{szpankowski1983asc}.
+
+We are interested in a somewhat more flexible solution in which it is possible to deterministically place some balls in some bins.
+A path to reach a solution to this other problem can be found in \cite{he2009sbr}.
+We believe that a more general and straightforward approach can be taken by using a result in Sec. IV.3 of \cite{feller1968ipt} that would provide a closed expression for the above mentioned probabilities.
+It would be interesting to see to which extent this later approach can be used to model multi-packet detection networks, in which it is possible to detect more than one transmission in a single slot.
+
+Possible collaborators for this task include the wireless communications group at UPF, and the mobile communications group at UIB, and the IT department at UC3M.
+
+  \item Formally proof that the idea to reach collision-free operation presented in \cite{barcelo2011cfo} holds for arbitrary network topologies, and offer tools to the research community to further test the idea.
+
+The workshop paper presents the idea and some results for toy scenarios.
+It would be highly desirable to obtain some theoretical backing that ensures that collision-free operation can be reached in any topology.
+
+Furthermore, more results are required to show that our suggested technique offers better performance than the standard IEEE 802.11s.
+Ideally, we should be able to release our protocol in a widely used network simulator such as ns-3, to allow other researchers to test the idea by themselves and ease the comparison with possible alternatives.
+
+The framework to evaluate IEEE 802.11s in ns-3 has been developed at the IITP (Russian Academy of Science).
+A collaboration would greatly ease the inclusion of our protocol into ns-3.
+
+ \item Packet aggregation and MU-MIMO.
+
+Packet aggregation has been included in the IEEE 802.11n standard to avoid the MAC bottleneck and deliver higher rates to the user.
+MU-MIMO is currently being studied in the context of WLANs to evaluate the potential advantages in terms of performance for different number of stations and antennas \cite{bellalta2011rqp}.
+
+It is not unreasonable to think that these technologies may also play a role in mesh networks.
+In the construction of the collision free schedule outlined in \cite{barcelo2011cfo}, it is assumed that the transmission length is bounded.
+Then the nodes may want to aggregate as many packets as possible within that limit.
+The choice of the maximum transmission length may have implications in terms of steady state performance and transient state duration that should be examined.
+
+Regarding MU-MIMO, it will be common that a mesh node participates in the forwarding of several flows.
+It would be convenient that the node transmitted only once in the schedule cycle and forwarded all the packets simultaneously.
+This vision can be realized using MU-MIMO which is the line that we have been exploring during the last year in the context of WLANs.
+
+This task will be carried out in collaboration with Boris Bellalta.
+
+ \item Prototype implementation.
+
+If one or more of the previous tasks are fruitful and show substantial performance improvement in analytical models and simulations, a prototype implementation is needed for ultimate validation.
+The NeTS group has an extensive experience in prototyping sensor networks and, to a lesser extent, WLANs. Potential collaborators include the IT dept. of UC3M, IMDEA institute and the Hamilton Institute which are developing a flexible platform to prototype MAC protocols in the FLAVIA project.
+A prototype implementation of the work presented in Sec. \ref{sec:background} has already been successfully carried out at the Hamilton Institute.
+
+\end{enumerate}
+
+\section{Adequacy of the candidate and contribution to the department}
+
+Jaume Barcelo is currently a postdoctoral researcher with the Universidad Carlos III de Madrid (UC3M). 
+He obtained his Ph.D. from Universitat Pompeu Fabra (UPF), and his master and bachelor degrees from Universitat Politecnica de Catalunya (UPC) and Universitat de les Illes Balears (UIB), respectively. 
+Jaume also worked as a research assistant for the Kaiserslautern Universitaet for a period of nine months.
+For the last eight years, he has been teaching, publishing and participating in different research projects both at UPF and UC3M.
+
+
+After graduating at UPF, Jaume obtained a two-year research award to join the NetCom research group at UC3M, in close collaboration with the IMDEA Networks research institute.
+In this post-doctoral stay, he had the opportunity to collaborate with leading researchers in his field.
+This collaboration has fructified in the form of articles, one of them co-authored with Albert Banchs.
+Albert is the current deputy director of IMDEA Networks and a widely recognized scientist, as evidenced by his senior editorial position in an IEEE journal and other services as TPC chair and guest editor in top publication venues.
+The research plan in the previous section stems from the combination of the expertise of wireless PHY and MAC layer of the UPF and the mesh network pioneering work at UC3M.
+
+In his postdoctoral years, Jaume also had the opportunity to teach in the master program in computer communications jointly offered by UC3M and UPC.
+The participating students were affiliated to UC3M, IMDEA Networks, UPC, and CTTC.
+The class was followed remotely by those that were in Barcelona.
+
+Besides the collaboration with the UC3M/IMDEA Networks tandem, Jaume has also worked with other international acclaimed experts such as David Malone (University of Ireland, Maynooth), and Hazer Inaltekin (University of Melbourne).
+During the two years of postdoctoral leave, Jaume has also kept a tight cooperation with the DTIC department.
+
+The research background of Jaume Barcelo, which includes both theoretical fundamental contributions such as \cite{barcelo2011opa} and protocol refinement and performance evaluation such as \cite{barcelo2011tcf}, is appropriate to execute the research proposal described in the previous section.
+This research proposal is well aligned with the DTIC network and communications research area.
+In particular, it can be included in the technologies and protocols for wireless networks sub-area and it obviously presents some collaboration opportunities with the wireless communications research group.
+The goal is to strengthen and enhance the department's current competence in those areas.
+
+Jaume's teaching experience both at the undergraduate and graduate level will also be incorporated to the department.
+He has been teaching mostly networking and related courses, such as computer networks (Xarxes i Serveis) cryptography and mobile services.
+This courses are typically divided in different sessions: lectures, seminars and labs.
+Jaume has covered all of these roles and he has also been coordinating courses.
+
+At this point, Jaume is ready to undertake the task of tutoring master and Ph.D students, to provide advice and help them to develop their research skills to successfully complete the programs that are offered at the host department.
+%\end{spacing}
+
+\bibliographystyle{unsrt}
+\bibliography{my_bib}
+
+\end{document}
