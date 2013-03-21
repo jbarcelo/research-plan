@@ -6,7 +6,7 @@ pdf:
 	#dvipdf barcelo_research_plan.dvi
 	dvips -o barcelo_research_plan.ps -Ppdf -G0 -t a4 barcelo_research_plan.dvi
 	ps2pdf -sPAPERSIZE=a4 -dEmbedAllFonts=true barcelo_research_plan.ps
-	evince barcelo_research_plan.pdf
+	evince barcelo_research_plan.pdf &
 
 bib:	
 	latex barcelo_research_plan.tex

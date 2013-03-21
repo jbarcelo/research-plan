@@ -8,13 +8,12 @@
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{psfrag}
-
 \geometry{verbose,tmargin=30mm,bmargin=25mm,lmargin=33mm,rmargin=33mm}
 
 
 \begin{document}
 
-\title{Multiple Access Wireless Mesh Networks \\ Research Plan 2012-2016}
+\title{Random Access Protocols for Wireless Networks\\ Research Plan 2012-2016}
 
 \author{Jaume Barcelo}
 
@@ -28,14 +27,11 @@
 \maketitle
 
 \begin{abstract}
-Wireless mesh networks offer some fascinating research challenges and recent standardization efforts indicate that there is a strong demand for such networks.
-We identify this opportunity to contribute in an area which is relevant both to the market and the research community, and we outline a research plan for the next years.
-The goal is to develop and evaluate a semi-random backoff medium access control protocol for wireless mesh networks.
-This approach has the potential to reach collision-free operation which results in an efficient use of the available channel resources.
-As a further step, the protocol will be extended to accommodate multi-packet transmission and reception.
+This report shortly summarizes the achievements of the first period as lecturer and describes the plan for the upcoming years, emphasizing collaboration aspects.
 
-\vspace{0.5cm}
-\textbf{Keywords}: mesh network, medium access control, collision-free operation, cross-layer, MPTR
+
+%\vspace{0.5cm}
+%\textbf{Keywords}: mesh network, medium access control, collision-free operation, cross-layer, MPTR
 
 \end{abstract}
 
@@ -104,9 +100,9 @@ When ideas come in brainstorming and discussion sessions, it is difficult to att
 It should be clear that all the advancements have been the result of continuous collaboration.
 Key people that have been working with me in this area include, in alphabetical order:
 \begin{itemize}
+\item Boris Bellalta: Aspects of multiple antenna, multi-channel protocols as well as queueing processes.
 \item Alessandro Checco: Decentralized constraint satisfaction with sensing restrictions.
 \item Ken Duffy: Decentralized constraint satisfaction and coexistence of different schedule length.
-\item Boris Bellalta: Aspects of multiple antenna, multi-channel protocols as well as queueing processes.
 \item Azadeh Faridi: Modeling, verification and communication. Backward compatibility and fairness.
 \item Nuria Garcia: Modeling and mathematical correctness.
 \item David Malone: Slot drift and other approaches to learning MAC protocols.
@@ -117,21 +113,27 @@ Key people that have been working with me in this area include, in alphabetical 
 
 \section{Achieved goals and contributions}
 
-A first solution for the construction of a collision-free schedule in multi-hop networks has been proposed in \cite{}.
+A first solution for the construction of a collision-free schedule in multi-hop networks has been proposed in \cite{barcelo2013dcc}.
 This is a translation or the existing solution in discrete-time access channels to the continuous-time access-channel.
 In a single-hop network, all nodes can synchronize to the end of transmissions and use slotted MAC protocols.
 Contrastingly, in multi-hops networks, it cannot longer be assumed that all nodes can hear all transmissions and therefore it is not possible to keep tight synchronization.
 
 
-Another contribution has been the extension collision-free protocols to WLAN (slotted) scenarios in which the number of contenders is very large \cite{}.
+Another contribution has been the extension collision-free protocols to WLAN (slotted) scenarios in which the number of contenders is very large.
 The contenders adjust their schedule length in a distributed fashion and use packet aggregation in order to maintain fairness.
-The firs results are very promising \cite{} and now a throughout evaluation as well as further discussion with the community is required to validate the ideas.
+The firs results are very promising \cite{sanabria2013fec} and now a throughout evaluation as well as further discussion with the community is required to validate the ideas.
 
-A Discrete Time Markov Chain model to estimate the number of rounds required to solve a decentralized constraint satisfaction problem using a very simple solver has been described in \cite{}.
+A Discrete Time Markov Chain model to estimate the number of rounds required to solve a decentralized constraint satisfaction problem using a very simple solver has been described in \cite{barcelo2012mdc}.
 
 An abandoned line of work, which is nonetheless a contribution, is the creation of a prototype embedded solution that can sense the spectrum and report UHF channel occupancy.
 This device has a wired interface and several of them can be deployed to gather information of channel occupancy in a large geographic region.
-The prototype was demonstrated in \cite{}.
+The prototype was demonstrated in \cite{sanabria2012ssu}.
+
+A problem of the current IEEE 802.11 standard is that the devices cannot differentiate between collisions and channel errors.
+As a consequence, collisions interfere with the Modulation Coding Scheme (MCS) selection mechanisms seriously harming performance.
+This problem can be solved by using collision-free access schemes as explained in \cite{martorell2012pec}.
+
+In \cite{bellalta2012ppa, bellalta2012rqp}, the interplay between the number of antennae, the queue size and the number of possible destinations in a downlink MU-MIMO is studied.
 
 
 \section{Next steps}
@@ -167,15 +169,28 @@ If WLANs are to be used to support real-time traffic, QoS will be needed, and we
 There is room for improvement in the current implementation, as queue-length adjustment has not been considered.
 An open research aspect is to evaluate what is the impact on QoS and fairness of setting different QoS queues to different lengths.
 
-\section{Open research}
+\section{Teaching}
+
+Two new courses on Quality of Service (QoS) and Wireless Sensor Networks (WSN) have been opened.
+The material of a third one, Networking Lab, has been renewed.
+This courses have been prepared in collaboration with Alex Bikfalvi, Luis Sanabria, and Ruizhi Liao.
+Finally, a seminar on contention protocols has been taught at the ASMT master.
+Supervision for two final degree projects and co-supervision of on Ph.D. thesis is being offered.
+
+There have also been two appointments.
+One from the school as a teaching coordinator for the Telematics degree and one from the department as a member of the teaching commission.
+
+
+
+\section{Collaborative research and teaching}
 
 This document is available in github.
-The papers I collaborate with, the source code of simulators, the talks and the lectures notes are also there.
+Most of the papers I collaborate with, the source code of simulators, the talks and the lectures notes are also there.
 This should make it easier for anyone interested in my work to look into the details, make corrections and engage in collaboration.
 
 %\end{spacing}
 
-\bibliographystyle{unsrt}
+\bibliographystyle{IEEEtran}
 \bibliography{my_bib}
 
 \end{document}
