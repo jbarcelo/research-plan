@@ -136,7 +136,8 @@ The prototype was demonstrated in \cite{}.
 
 \section{Next steps}
 
-Another step forward has been the modeling of link activation problem as decentralized constraint satisfaction problem.
+
+An ongoing work is the modeling of link activation problem as a decentralized constraint satisfaction problem.
 A first step is to create two graphs, one with the topology that describes the ability to communicate (and interfere) and one with the willingness to communicate.
 The graph representation of the topology is an important simplification and it is still an open question whether it is valid in practice.
 Furthermore, symmetry is assumed and therefore the first graph is an undirected graph.
@@ -145,7 +146,32 @@ The willingness to transmit is assumed to be a directed graph.
 Then the edges of the second graph become the vertices of a third graph, the interference graph, that describes how the communication links interfere with each others.
 Finding an activation schedule for this graph is similar to a graph coloring problem and can be addressed by a decentralized constraint satisfaction solver \cite{}.
 
+Another research front is the extension of previous contributions to the RFID technology.
+Specifically, EPC Gen-2 RFID technology is considered.
+Preliminary results show that this extension only makes sense when a set of tags have to read multiple times.
+There are scenarios, such as the ``Smart Shelf'' designed by the UbiCA Lab in our department, that precisely rely on continuously reading the tags of the products on the shelf to detect any interaction by the users.
+In this particular scenario, the reaction time could be reduced one order of magnitude.
 
+This research line is particularly attractive as there is a clear possibility of prototyping using IAIK's ``Demo Tag''.
+The execution of protocols in the RFID technology is slower and therefore they can be implemented in programmable hardware.
+
+As mentioned in the previous section, it is necessary to carry out an exhaustive evaluation of the solution proposed to accommodate a large number of contenders in a collision-free fashion.
+In particular, non-saturation scenarios, the presence of channel errors, the trade-offs of aggregation (throughput, delay, jitter) and mixed scenarios that include both legacy and new stations are of interest.
+
+It is also important to closely track and replicate the advancements in the FLAVIA research project and ``MAC processors'' area leaded by Giuseppe Bianchi, as a breakthrough in that area would make it possible to implement our solutions also in the WLAN technology.
+We are already in contact with that team to react if the opportunity appears.
+
+Finally, it is also worth studying the quality-of-service implications of the new protocols.
+The current standard offers some support for QoS differentiation.
+If WLANs are to be used to support real-time traffic, QoS will be needed, and we have to evaluate our protocols in the presence of different traffic classes.
+There is room for improvement in the current implementation, as queue-length adjustment has not been considered.
+An open research aspect is to evaluate what is the impact on QoS and fairness of setting different QoS queues to different lengths.
+
+\section{Open research}
+
+This document is available in github.
+The papers I collaborate with, the source code of simulators, the talks and the lectures notes are also there.
+This should make it easier for anyone interested in my work to look into the details, make corrections and engage in collaboration.
 
 %\end{spacing}
 
