@@ -27,7 +27,8 @@
 \maketitle
 
 \begin{abstract}
-This report shortly summarizes the achievements of the first period as lecturer and describes the plan for the upcoming years, emphasizing collaboration aspects.
+This report briefly summarizes the achievements of the first period as a lecturer and describes the plan for the upcoming years.
+Both research, projects, and teaching aspects are covered, as well as the commitment to increase the efficiency by effective collaboration.
 
 
 %\vspace{0.5cm}
@@ -44,13 +45,12 @@ This report shortly summarizes the achievements of the first period as lecturer 
 \section{Introduction}
 
 We all use wireless access networks in our daily live.
-Wireless local area networks (WLANs) are a cost-effective high-speed to connect mobile devices to data networks and, in particular, to the Internet.
+Wireless local area networks (WLANs) are a cost-effective high-speed solution to connect mobile devices to data networks and, in particular, to the Internet.
 As of today, it seems that the IEEE 802.11 technologies will continue to play a key role in wireless data communications in the upcoming years.
-IEEE 802.11 access points are deployed in busy locations and more numerous and closer to the user than cellular base stations.
-Therefore, they can absorb high volumes of traffic with modest investments.
+IEEE 802.11 WLANs are deployed in large numbers in busy locations and can absorb high volumes of traffic with modest investments.
 
 It is fascinating that this highly successful and effective technology relies on random contention protocols.
-These protocols that have its origins in the Aloha network pioneered by Norman Abramson in Hawaii in the 70s have shown to be able to satisfy the bandwidth hungriness of the new century.
+These protocols have its origins in the Aloha network pioneered by Norman Abramson in Hawaii in the 70s and have shown to be able to satisfy the wireless bandwidth hungriness of the new century.
 
 Still, to satisfy the ever-growing user expectations, there are several challenges to be addressed.
 The following items motivate this research proposal:
@@ -63,7 +63,7 @@ These protocols must take into consideration packet aggregation to fight the MAC
 \item Implementation and prototyping.
 In order to appropriately test proposed protocols in a realistic use it is necessary to build prototypes.
 We are collaborating with the spearheading European project FLAVIA that is making possible to implement some new protocols in commercial off-the-shelf hardware (Broadcom WLAN interfaces).
-Apparently it is not possible to implement our modifications, yet.
+Apparently it is not possible to implement our proposed protocols yet.
 But this situation could change at any time.
 
 Another opportunity for prototyping is to move to other technologies in which the operation of the protocols is slower and therefore can be implemented in programmable hardware.
@@ -71,7 +71,7 @@ In particular, the protocols we are considering for WLANs have their parallel in
 This opens the possibility of prototyping and making a contribution in a different technology and different products.
 A first over-the-napkin computation promises and order of magnitude reduction in the time required for an RFID book-case to read all the RFIDs of all the books which are placed in it.
 \item Multi-hop operation.
-In order to provide larger areas and offer increased coverage, it is important that wireless devices can relay packets over multiple wireless hops.
+In order to provide service to larger areas and offer improved coverage, it is important that wireless devices can relay packets over multiple wireless hops.
 There are early solution attempts to the construction of a collision-free operation in multi-hop networks.
 Nevertheless, it is necessary to refine them to further increase the efficiency of the system and attain a performance that is comparable to that of single-hop networks.
 \item Alleviate the medium access control (MAC) bottleneck problem.
@@ -80,20 +80,22 @@ The MAC bottleneck refers to the fact that there is a fixed amount of time overh
 As the PHY data rates increase, the packets become shorter and the weight of the fixed time overhead is higher.
 Simply increasing the PHY data rate results in diminishing returns from the user perspective.
 The straightforward solution to the MAC bottleneck is aggregation, but when and how to aggregate is still an open question.
-Increasing aggregation may affect delay and/or jitter depending on the particular scenario and QoS requirements of the most stringent traffic might be violated. 
+Increasing aggregation may affect delay and/or jitter depending on the particular scenario, and QoS requirements of the most stringent traffic might be violated. 
 \item QoS in high data rate WLANs. 
-If we want to use a single network to perform voluminous bulk data transfer (such as backup services) and voice over the same network, we have to be extra careful in setting the contention parameters of the wireless stations.
-If applying priority schemes, fairness and abuse-prevention mechanisms need to be installed.
+If we want to use a single network to perform voluminous bulk data transfer (such as backup services) and voice services, we have to be extra careful in setting the contention parameters of the wireless stations.
+Priority schemes, fairness and abuse-prevention mechanisms need to be installed.
 The contention protocols need to be designed in conjunction with queueing schemes that can satisfy the different traffic classes while maintaining the simplicity principles that have paved the success of IEEE 802.11 until today.
 \item Management of antenna and spectrum resources.
 Current devices are equipped with multiple antennas and have the possibility to operate in multiple channels simultaneously.
 However, how to use this new capabilities to deliver satisfactory performance in a wide range of scenarios is still a matter of study.
-For example, an straightforward greedy approach of using as much bandwidth as possible is not necessarily the best solution in a setting where multiple networks need to share a limited amount of bandwidth.
+For example, a straightforward greedy approach of using as much bandwidth as possible is not necessarily the best solution in a setting where multiple networks need to share a limited amount of bandwidth.
 Regarding the availability of multiple antennas, they can be used for diversity, parallel streams between two devices (SU-MIMO), simultaneous streams involving more than two devices (MU-MIMO) and beamforming.
 There is not a one-size-fits-all solution that is the most beneficial in all scenarios and careful design choices are necessary to attain the maximum benefit from the available spectrum and antenna resources.
 \end{itemize}
 
-\section{Key collaborations}
+\section{Research}
+
+\subsection{Key collaborations}
 
 All the work described in this report has been done cooperation with other researchers.
 When ideas come in brainstorming and discussion sessions, it is difficult to attribute the contribution to a single person.
@@ -102,21 +104,21 @@ Key people that have been working with me in this area include, in alphabetical 
 \begin{itemize}
 \item Boris Bellalta: Aspects of multiple antenna, multi-channel protocols as well as queueing processes.
 \item Alessandro Checco: Decentralized constraint satisfaction with sensing restrictions.
-\item Ken Duffy: Decentralized constraint satisfaction and coexistence of different schedule length.
-\item Azadeh Faridi: Modeling, verification and communication. Backward compatibility and fairness.
+\item Ken Duffy: Decentralized constraint satisfaction and coexistence of different schedule lengths.
+\item Azadeh Faridi: Modeling, verification and communication. Backward compatibility and fairness. Hysteresis and fair-share.
 \item Nuria Garcia: Modeling and mathematical correctness.
 \item David Malone: Slot drift and other approaches to learning MAC protocols.
-\item Gabriel Martorell: Evaluation of the protocols in IEEE 802.11n channel realizations and interplay the auto-rate-fallback (ARF) algorithm and closed-loop MCS adaption.
+\item Gabriel Martorell: Evaluation of the protocols in IEEE 802.11n channel realizations and interplay with the auto-rate-fallback (ARF) algorithm and closed-loop MCS adaption.
 \item Joan Melia: RFID reference scenario, simulation, and prototyping.
-\item Luis Sanabria-Russo: Simulation and prototyping in the WLAN scenario. Hysteresis and fair-share.
+\item Luis Sanabria-Russo: Simulation and prototyping in the WLAN scenario. Hysteresis and fair-share. USRP and white spaces.
 \end{itemize}
 
-\section{Achieved goals and contributions}
+\subsection{Achieved goals and contributions}
 
 A first solution for the construction of a collision-free schedule in multi-hop networks has been proposed in \cite{barcelo2013dcc}.
-This is a translation or the existing solution in discrete-time access channels to the continuous-time access-channel.
+This is a translation or the existing solution in discrete-time access channels to the continuous-time access channel.
 In a single-hop network, all nodes can synchronize to the end of transmissions and use slotted MAC protocols.
-Contrastingly, in multi-hops networks, it cannot longer be assumed that all nodes can hear all transmissions and therefore it is not possible to keep tight synchronization.
+Contrastingly, in multi-hop networks, it cannot longer be assumed that all nodes can hear all transmissions and therefore it is not possible to keep tight synchronization.
 
 
 Another contribution has been the extension collision-free protocols to WLAN (slotted) scenarios in which the number of contenders is very large.
@@ -125,8 +127,9 @@ The firs results are very promising \cite{sanabria2013fec} and now a throughout 
 
 A Discrete Time Markov Chain model to estimate the number of rounds required to solve a decentralized constraint satisfaction problem using a very simple solver has been described in \cite{barcelo2012mdc}.
 
-An abandoned line of work, which is nonetheless a contribution, is the creation of a prototype embedded solution that can sense the spectrum and report UHF channel occupancy.
-This device has a wired interface and several of them can be deployed to gather information of channel occupancy in a large geographic region.
+Another line of work is the creation of a prototype embedded solution that can sense the spectrum and report UHF channel occupancy.
+This device has a wired interface to communicate the information gathered by the radio front-end.
+The idea is that several of these devices can be deployed to gather information of channel occupancy in a large geographic region.
 The prototype was demonstrated in \cite{sanabria2012ssu}.
 
 A problem of the current IEEE 802.11 standard is that the devices cannot differentiate between collisions and channel errors.
@@ -136,7 +139,7 @@ This problem can be solved by using collision-free access schemes as explained i
 In \cite{bellalta2012ppa, bellalta2012rqp}, the interplay between the number of antennae, the queue size and the number of possible destinations in a downlink MU-MIMO is studied.
 
 
-\section{Next steps}
+\subsection{Next steps}
 
 
 An ongoing work is the modeling of link activation problem as a decentralized constraint satisfaction problem.
@@ -146,11 +149,11 @@ Furthermore, symmetry is assumed and therefore the first graph is an undirected 
 The willingness to transmit is assumed to be a directed graph.
 
 Then the edges of the second graph become the vertices of a third graph, the interference graph, that describes how the communication links interfere with each others.
-Finding an activation schedule for this graph is similar to a graph coloring problem and can be addressed by a decentralized constraint satisfaction solver \cite{}.
+Finding an activation schedule for this graph is similar to a graph coloring problem with sensing restrictions \cite{checco2012lbc} and can be addressed by a decentralized constraint satisfaction solver \cite{duffy2011dcs}.
 
 Another research front is the extension of previous contributions to the RFID technology.
 Specifically, EPC Gen-2 RFID technology is considered.
-Preliminary results show that this extension only makes sense when a set of tags have to read multiple times.
+Preliminary results show that this extension only makes sense when a set of tags have to be read multiple times.
 There are scenarios, such as the ``Smart Shelf'' designed by the UbiCA Lab in our department, that precisely rely on continuously reading the tags of the products on the shelf to detect any interaction by the users.
 In this particular scenario, the reaction time could be reduced one order of magnitude.
 
@@ -158,7 +161,7 @@ This research line is particularly attractive as there is a clear possibility of
 The execution of protocols in the RFID technology is slower and therefore they can be implemented in programmable hardware.
 
 As mentioned in the previous section, it is necessary to carry out an exhaustive evaluation of the solution proposed to accommodate a large number of contenders in a collision-free fashion.
-In particular, non-saturation scenarios, the presence of channel errors, the trade-offs of aggregation (throughput, delay, jitter) and mixed scenarios that include both legacy and new stations are of interest.
+Specifically, the following aspects are of interest: non-saturation scenarios, the presence of channel errors, the trade-offs of aggregation (throughput, delay, jitter) and mixed scenarios that include both legacy and new stations.
 
 It is also important to closely track and replicate the advancements in the FLAVIA research project and ``MAC processors'' area leaded by Giuseppe Bianchi, as a breakthrough in that area would make it possible to implement our solutions also in the WLAN technology.
 We are already in contact with that team to react if the opportunity appears.
@@ -167,7 +170,20 @@ Finally, it is also worth studying the quality-of-service implications of the ne
 The current standard offers some support for QoS differentiation.
 If WLANs are to be used to support real-time traffic, QoS will be needed, and we have to evaluate our protocols in the presence of different traffic classes.
 There is room for improvement in the current implementation, as queue-length adjustment has not been considered.
-An open research aspect is to evaluate what is the impact on QoS and fairness of setting different QoS queues to different lengths.
+An open research aspect is to evaluate what is the impact of setting different QoS queues to different lengths.
+This research is also related to bufferbloat problems \cite{nichols2012}.
+
+\section{Projects}
+
+The ``Commons for Europe'' CIP project explores the possibilities for efficient commons models in the areas of apps for the citizens (``Code for Europe'') and network deployment for advanced services and digital inclusion (``Bottom-up Broadband'').
+So far, four pilots have been carried out covering different topics.
+\begin{itemize}
+\item The ``Fiber from the X'' pilot covers grassroots fiber deployments.
+\item The ``Free Europe WiFi'' is about the documentation and replication of the ``OpenWISP'' open source public WiFi solution that is used in Italy.
+\item The ``Open Sensor Network'' goal is to design economic (<100Eur) sensor networks for environmental monitoring for the cities and their citizens. 
+An important aspect is the sharing of the gathered data.
+\item The ``Mobile Node'' is about the deployment of a mesh network that combines fixed nodes on the roof with a mobile node that can be used to offer WiFi coverage to events on the street.
+\end{itemize}
 
 \section{Teaching}
 
@@ -182,11 +198,14 @@ One from the school as a teaching coordinator for the Telematics degree and one 
 
 
 
-\section{Collaborative research and teaching}
+\section{Open research and teaching}
 
 This document is available in github.
-Most of the papers I collaborate with, the source code of simulators, the talks and the lectures notes are also there.
-This should make it easier for anyone interested in my work to look into the details, make corrections and engage in collaboration.
+Most of the papers I collaborate with, the source code of simulators, the talk slides, project deliverables and the lectures notes are also there.
+This tool makes it easier for anyone interested in my work to look into the details, make corrections and engage in collaboration.
+It is possible to share and contribute to ongoing work, and quickly detect in which projects I am investing my time.
+Git and github are used in collaborative efforts such as the development of the Linux kernel.
+It is my belief that these tools can complement traditional publishing houses and make research more efficient, just like Wikipedia complements traditional encyclopedias. 
 
 %\end{spacing}
 
