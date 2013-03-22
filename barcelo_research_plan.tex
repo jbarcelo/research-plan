@@ -110,9 +110,10 @@ Key people that have been working with me in this area include, in alphabetical 
 \item Ken Duffy: Decentralized constraint satisfaction and coexistence of different schedule lengths.
 \item Azadeh Faridi: Modeling, verification and communication. Backward compatibility and fairness. Hysteresis and fair-share.
 \item Nuria Garcia: Modeling and mathematical correctness.
-\item David Malone: Slot drift and other approaches to learning MAC protocols.
+\item David Malone: Slot drift and other approaches to learning MAC protocols. Construction of a collision-free schedule of beacons in wireless sensor networks.
 \item Gabriel Martorell: Evaluation of the protocols in IEEE 802.11n channel realizations and interplay with the auto-rate-fallback (ARF) algorithm and closed-loop MCS adaption.
 \item Joan Melia: RFID reference scenario, simulation, and prototyping.
+\item Miquel Oliver: Bottom-up Broadband and open access networks.
 \item Luis Sanabria-Russo: Simulation and prototyping in the WLAN scenario. Hysteresis and fair-share. USRP and white spaces.
 \end{itemize}
 
@@ -169,13 +170,15 @@ Specifically, the following aspects are of interest: non-saturation scenarios, t
 It is also important to closely track and replicate the advancements in the FLAVIA research project and ``MAC processors'' area leaded by Giuseppe Bianchi, as a breakthrough in that area would make it possible to implement our solutions also in the WLAN technology.
 We are already in contact with that team to react if the opportunity appears.
 
-Finally, it is also worth studying the quality-of-service implications of the new protocols.
+Another aspect worth of studying is the quality-of-service implications of the new protocols.
 The current standard offers some support for QoS differentiation.
 If WLANs are to be used to support real-time traffic, QoS will be needed, and we have to evaluate our protocols in the presence of different traffic classes.
 There is room for improvement in the current implementation, as queue-length adjustment has not been considered.
 An open research aspect is to evaluate what is the impact of setting different QoS queues to different lengths.
 This research is also related to bufferbloat problems \cite{nichols2012cqd}.
 
+Finally, moving to a different field, there is also ongoing work in Wireless Sensor Networks.
+The idea is to use advanced collision prevention mechanisms to built a schedule of beacons among the participating nodes \cite{cano2013iri}
 \section{Projects}
 
 The ``Commons for Europe'' CIP project explores the possibilities for efficient commons models in the areas of apps for the citizens (``Code for Europe'') and network deployment for advanced services and digital inclusion (``Bottom-up Broadband'').
@@ -183,7 +186,7 @@ So far, four pilots have been carried out covering different topics.
 \begin{itemize}
 \item The ``Fiber from the X'' pilot covers grassroots fiber deployments (by Jorge Beltran).
 \item The ``Free Europe WiFi'' is about the documentation and replication of the ``OpenWISP'' open source public WiFi solution that is used in Italy (by Nacho Justel).
-\item The ``Open Sensor Network'' goal is to design economic (<100Eur) sensor networks for environmental monitoring for the cities and their citizens (by Alejandro Andreu). 
+\item The ``Open Sensor Network'' goal is to design economic ($<100$Eur) sensor networks for environmental monitoring for the cities and their citizens (by Alejandro Andreu). 
 An important aspect is the sharing of the gathered data.
 \item The ``Mobile Node'' is about the deployment of a mesh network that combines fixed nodes on the roof with a mobile node that can be used to offer WiFi coverage to events on the street (by Fernando Gros).
 \end{itemize}
